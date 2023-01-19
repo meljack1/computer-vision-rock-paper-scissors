@@ -13,6 +13,8 @@ The dependencies for this project can be found in [requirements.txt](requirement
 ``` conda create -n computer-vision ```
 1. Activate the environment using this command: 
 ``` conda activate computer-vision ```
+1. Check that your conda environment has successfully activated. If it has, the name of the environment should appear in brackets in the terminal as shown below:
+![](images\conda.PNG)
 1. Install pip using this command:
 ``` conda install pip ```
 1. Install the dependencies from requirements.txt using the following command: 
