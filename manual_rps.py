@@ -7,3 +7,11 @@ def get_computer_choice():
 def get_user_choice():
     user_choice = input("Rock, paper, scissors?")
     return user_choice
+
+def get_winner(computer_choice, user_choice):
+    if (computer_choice == user_choice):
+        print("It is a tie!") 
+    elif (computer_choice == "Rock" and user_choice == "Paper") or (computer_choice == "Paper" and user_choice == "Scissors") or (computer_choice == "Scissors" and user_choice == "Rock"):
+        print("You won!")
+    else:
+        print("You lost!")
