@@ -1,4 +1,5 @@
 import random
+import time
 import cv2
 from keras.models import load_model
 import numpy as np
@@ -11,7 +12,9 @@ def get_computer_choice():
     return random.choice(rps_list)
 
 def get_prediction():
-    while True: 
+    rps_list = ["rock", "scissors", "paper", "nothing"]
+    start_time = time.time()
+    while start_time + 3 > time.time(): 
         ret, frame = cap.read()
         resized_frame = cv2.resize(frame, (224, 224), interpolation = cv2.INTER_AREA)
         image_np = np.array(resized_frame)
@@ -20,7 +23,6 @@ def get_prediction():
         prediction = model.predict(data)
         cv2.imshow('frame', frame)
         # Press q to close the window
-        rps_list = ["Rock", "Scissors", "Paper", "Nothing"]
         # print([rps_list[index] for index, item in enumerate(prediction[0]) if item==max(prediction[0])])
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
@@ -29,7 +31,8 @@ def get_prediction():
     cap.release()
     # Destroy all the windows
     cv2.destroyAllWindows()
-    return [rps_list[index] for index, item in enumerate(prediction[0]) if item==max(prediction[0])][0]
+    prediction_final = [rps_list[index] for index, item in enumerate(prediction[0]) if item==max(prediction[0])][0]
+    print("you chose " + prediction_final)
 
 
 def get_user_choice():
