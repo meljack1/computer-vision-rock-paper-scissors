@@ -21,7 +21,7 @@ The dependencies for this project can be found in [requirements.txt](requirement
 ``` pip install requirements.txt ```
 
 The dependencies should now be installed to your conda environment. This program can be run by navigating to ``` .../computer-vision-rock-paper-scissors ``` and running the following command:
-``` python manual_rps.py ```
+``` python camera_rps.py ```
 
 # Manual Rock-Paper-Scissors
 [manual_rps.py](manual_rps.py) contains the basic code required to play rock paper scissors against a randomised computer opponent by manually inputting "Rock", "Paper" or "Scissors". 
@@ -33,3 +33,7 @@ The dependencies should now be installed to your conda environment. This program
 ``` get_winner ``` compares the user's choice against the computer's, and determines who the winner is by comparing the selections, printing a relevant message. 
 
 ``` play ``` prompts a game to play, getting the user's choice and computer's choice before determining the winner using the ```get_winner``` function. 
+
+# Camera Rock-Paper-Scissors
+This file contains the code to play rock paper scissors against the computer using your camera. The game is defined in a class called ```Rock_Paper_Scissors_Game```. The game will continue to play until the user or computer has won three times, or until 5 rounds have been played in total. 
+
