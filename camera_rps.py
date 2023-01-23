@@ -26,11 +26,11 @@ def get_prediction():
         # print([rps_list[index] for index, item in enumerate(prediction[0]) if item==max(prediction[0])])
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-                
+
     # After the loop release the cap object
     ## cap.release()
     # Destroy all the windows
-    ##  cv2.destroyAllWindows()
+    ## cv2.destroyAllWindows()
     prediction_final = [rps_list[index] for index, item in enumerate(prediction[0]) if item==max(prediction[0])][0]
     return prediction_final
 
@@ -49,14 +49,18 @@ def get_winner(computer_choice, user_choice):
 def play():
     computer_wins = 0
     user_wins = 0
-    while computer_wins < 3 and user_wins < 3:
+    rounds_played = 0
+    while computer_wins < 3 and user_wins < 3 and rounds_played < 5:
         computer_choice = get_computer_choice()
-        user_choice = get_prediction()
+        user_choice = "Nothing"
+        while user_choice == "Nothing":
+            user_choice = get_prediction()
         winner = get_winner(computer_choice, user_choice)
         if winner == "User":
             user_wins += 1
         elif winner == "Computer":
             computer_wins += 1
+        rounds_played += 1
     if user_wins == 3:
         print("You have won 3 games!")
     else:
