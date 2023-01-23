@@ -12,7 +12,7 @@ def get_computer_choice():
     return random.choice(rps_list)
 
 def get_prediction():
-    rps_list = ["rock", "scissors", "paper", "nothing"]
+    rps_list = ["Rock", "Scissors", "Paper", "Nothing"]
     start_time = time.time()
     while start_time + 3 > time.time(): 
         ret, frame = cap.read()
@@ -28,26 +28,38 @@ def get_prediction():
             break
                 
     # After the loop release the cap object
-    cap.release()
+    ## cap.release()
     # Destroy all the windows
-    cv2.destroyAllWindows()
+    ##  cv2.destroyAllWindows()
     prediction_final = [rps_list[index] for index, item in enumerate(prediction[0]) if item==max(prediction[0])][0]
-    print("you chose " + prediction_final)
-
-
-def get_user_choice():
-    user_choice = input("Rock, paper, scissors?")
-    return user_choice
+    return prediction_final
 
 def get_winner(computer_choice, user_choice):
     if (computer_choice == user_choice):
-        print("It is a tie!") 
+        print("It's a tie this round!")
     elif (computer_choice == "Rock" and user_choice == "Paper") or (computer_choice == "Paper" and user_choice == "Scissors") or (computer_choice == "Scissors" and user_choice == "Rock"):
-        print("You won!")
+        print("You win this round!")
+        return "User"
+    elif (user_choice == "Rock" and computer_choice == "Paper") or (user_choice == "Paper" and computer_choice == "Scissors") or (user_choice == "Scissors" and computer_choice == "Rock"):
+        print("You lose this round")
+        return "Computer"
     else:
-        print("You lost!")
+        return "Error"
 
 def play():
-    computer_choice = get_computer_choice()
-    user_choice = get_user_choice()
-    get_winner(computer_choice, user_choice)
+    computer_wins = 0
+    user_wins = 0
+    while computer_wins < 3 and user_wins < 3:
+        computer_choice = get_computer_choice()
+        user_choice = get_prediction()
+        winner = get_winner(computer_choice, user_choice)
+        if winner == "User":
+            user_wins += 1
+        elif winner == "Computer":
+            computer_wins += 1
+    if user_wins == 3:
+        print("You have won 3 games!")
+    else:
+        print("You have lost...")
+
+play()
