@@ -32,13 +32,13 @@ class Rock_Paper_Scissors_Game():
         return prediction_final
     def get_winner(self, computer_choice, user_choice):
         if (computer_choice == user_choice):
-            print(f"It's a tie this round! (Your choice: {user_choice} / Computer's choice: {computer_choice})")
+            print(f"Round {self.rounds_played}: It's a tie this round! (Your choice: {user_choice} / Computer's choice: {computer_choice})")
             return "Tie"
         elif (computer_choice == "Rock" and user_choice == "Paper") or (computer_choice == "Paper" and user_choice == "Scissors") or (computer_choice == "Scissors" and user_choice == "Rock"):
-            print(f"You win this round! (Your choice: {user_choice} / Computer's choice: {computer_choice})")
+            print(f"Round {self.rounds_played}: You win this round! (Your choice: {user_choice} / Computer's choice: {computer_choice})")
             return "User"
         elif (user_choice == "Rock" and computer_choice == "Paper") or (user_choice == "Paper" and computer_choice == "Scissors") or (user_choice == "Scissors" and computer_choice == "Rock"):
-            print(f"You lose this round (Your choice: {user_choice} / Computer's choice: {computer_choice})")
+            print(f"Round {self.rounds_played}: You lose this round (Your choice: {user_choice} / Computer's choice: {computer_choice})")
             return "Computer"
         else:
             return "Error"
