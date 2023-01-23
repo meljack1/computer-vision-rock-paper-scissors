@@ -63,7 +63,9 @@ def play():
         rounds_played += 1
     if user_wins == 3:
         print("You have won 3 games!")
-    else:
+    elif computer_wins == 3:
         print("You have lost...")
+    else: 
+        print("Game over.")
 
 play()
