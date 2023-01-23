@@ -55,12 +55,10 @@ class Rock_Paper_Scissors_Game():
                 self.user_wins += 1
             elif winner == "Computer":
                 self.computer_wins += 1
-        if self.user_wins == 3:
-            print("You have won 3 games! Congratulations.")
-        elif self.computer_wins == 3:
-            print("You lose - the computer has won 3 games.")
-        else: 
-            print("Game over - too many rounds.")
+        if self.user_wins > self.computer_wins:
+            print("You have won! Congratulations.")
+        else:
+            print("The computer has defeated you! Try again next time.")
 
         # After the loop release the cap object
         cap.release()
