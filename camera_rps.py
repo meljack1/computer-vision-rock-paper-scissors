@@ -3,9 +3,6 @@ import time
 import cv2
 from keras.models import load_model
 import numpy as np
-model = load_model('keras_model.h5')
-cap = cv2.VideoCapture(0)
-data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
 class Rock_Paper_Scissors_Game():
     def __init__(self):
@@ -13,9 +10,12 @@ class Rock_Paper_Scissors_Game():
         self.computer_wins = 0
         self.user_wins = 0
         self.rounds_played = 0
+        self.model = load_model('keras_model.h5')
+        self.cap = cv2.VideoCapture(0)
+        self.data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
     def get_computer_choice(self):
         return random.choice(self.rps_list[:-1])
-    def get_prediction(self):
+    def get_user_choice(self):
         start_time = time.time()
         while start_time + 3 > time.time(): 
             ret, frame = cap.read()
