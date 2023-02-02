@@ -13,7 +13,7 @@ class Rock_Paper_Scissors_Game():
         self.model = load_model('keras_model.h5')
         self.cap = cv2.VideoCapture(0)
         self.data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-    def get_computer_choice(self):
+    def get_computer_choice():
         """ Randomly generates computer choice and returns value.
         """
         return random.choice(["Rock", "Scissors", "Paper"])
