@@ -18,6 +18,9 @@ class Rock_Paper_Scissors_Game():
         """
         return random.choice(["Rock", "Scissors", "Paper"])
     def get_user_choice(self):
+        """ Determines user choice after a 3 second countdown using
+            webcam to detect which has been chosen using keras model.
+        """
         start_time = time.time()
         while start_time + 3 > time.time(): 
             ret, frame = cap.read()
@@ -33,6 +36,8 @@ class Rock_Paper_Scissors_Game():
         prediction_final = [self.rps_list[index] for index, item in enumerate(prediction[0]) if item==max(prediction[0])][0]
         return prediction_final
     def get_winner(self, computer_choice, user_choice):
+        """ Determines winner by comparing computer choice with user choice.
+        """
         if (computer_choice == user_choice):
             print(f"Round {self.rounds_played}: It's a tie this round! (Your choice: {user_choice} / Computer's choice: {computer_choice})")
             return "Tie"
@@ -45,13 +50,18 @@ class Rock_Paper_Scissors_Game():
         else:
             return "Error"
     def play(self):
+        """ Plays a game which will end when player or computer reaches 3 points, or
+            5 rounds in total have passed. 
+            User choice and computer choice are determined by get_user_choice() and 
+            get_computer_choice() respectively. Winner is determined with get_winner()
+        """
         while self.computer_wins < 3 and self.user_wins < 3 and self.rounds_played < 5:
             self.rounds_played += 1
             computer_choice = self.get_computer_choice()
-            user_choice = self.get_prediction()
+            user_choice = self.get_user_choice()
             while user_choice == "Nothing":
                 print("No rock, paper or scissors detected")
-                user_choice = self.get_prediction()
+                user_choice = self.get_user_choice()
             winner = self.get_winner(computer_choice, user_choice)
             if winner == "User":
                 self.user_wins += 1
