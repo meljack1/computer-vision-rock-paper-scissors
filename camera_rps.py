@@ -14,7 +14,9 @@ class Rock_Paper_Scissors_Game():
         self.cap = cv2.VideoCapture(0)
         self.data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
     def get_computer_choice(self):
-        return random.choice(self.rps_list[:-1])
+        """ Randomly generates computer choice and returns value.
+        """
+        return random.choice(["Rock", "Scissors", "Paper"])
     def get_user_choice(self):
         start_time = time.time()
         while start_time + 3 > time.time(): 
